@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="flex items-center justify-between mb-4">
-        <h1 class="text-lg font-medium">Parts</h1>
+        <h1 class="text-lg font-medium text-white">Parts</h1>
         <form method="get" action="{{ route('parts.index') }}" class="flex items-center gap-2">
-            <input name="q" value="{{ $q ?? '' }}" placeholder="Search by name or SKU" class="border p-2 rounded-sm text-sm" />
+            <input name="q" value="{{ $q ?? '' }}" placeholder="Search by name or SKU" class="border  text-white p-2 rounded-sm text-sm" />
             <button class="px-3 py-2 bg-[#1b1b18] text-white rounded-sm text-sm">Search</button>
         </form>
     </div>

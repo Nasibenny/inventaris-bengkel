@@ -13,10 +13,10 @@
     <body class="min-h-screen bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18]">
         <nav class="p-4 bg-white dark:bg-[#161615] border-b border-[#e3e3e0]">
             <div class="max-w-6xl mx-auto flex justify-between items-center">
-                <a href="{{ route('parts.index') }}" class="font-medium">Yamaha Parts</a>
+                <a href="{{ route('parts.index') }}" class="font-medium text-white">Yamaha Parts</a>
                 <div class="flex items-center gap-3">
-                    <a href="{{ route('parts.index') }}" class="text-sm">Parts</a>
-                    <a href="{{ route('parts.create') }}" class="text-sm">Add Part</a>
+                    <a href="{{ route('parts.index') }}" class="text-sm text-white">Parts</a>
+                    <a href="{{ route('parts.create') }}" class="text-sm text-white">Add Part</a>
                 </div>
             </div>
         </nav>

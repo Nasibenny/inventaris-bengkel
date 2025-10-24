@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-lg font-medium mb-4">Part: {{ $part->name }}</h1>
+    <h1 class="text-lg font-medium mb-4 ">Part: {{ $part->name }}</h1>
 
     <div class="bg-white border p-6 rounded-sm max-w-2xl">
         <dl class="grid grid-cols-2 gap-4 text-sm">

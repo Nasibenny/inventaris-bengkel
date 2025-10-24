@@ -12,7 +12,7 @@ class Part extends Model
     protected $fillable = [
         'sku',
         'name',
-        'description',
+        'descrcleararaiption',
         'category_id',
         'quantity',
         'price',
