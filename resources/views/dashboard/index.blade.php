@@ -28,19 +28,23 @@
         <table class="w-full text-left">
             <thead class="text-gray-400 border-b border-gray-700">
                 <tr>
+                    <th class="py-2 hidden">No</th>
                     <th class="py-2">Spare Part</th>
-                    <th class="py-2">Part Number</th>
-                    <th class="py-2">Quantity</th>
-                    <th class="py-2">Location</th>
+                    <th class="py-2">Kode Part</th>
+                    <th class="py-2">Jenis</th>
+                    <th class="py-2">Stok</th>
+                    <th class="py-2">Harga</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($spareparts as $part)
                 <tr class="border-b border-gray-700 hover:bg-gray-700/30">
-                    <td class="py-2">{{ $part->name }}</td>
-                    <td class="py-2">{{ $part->partnumber }}</td>
-                    <td class="py-2">{{ $part->quantity }}</td>
-                    <td class="py-2">{{ $part->location }}</td>
+                    <td class="py-2 hidden">{{ $part->id_sparepart  }}</td>
+                    <td class="py-2">{{ $part->nama_sparepart }}</td>
+                    <td class="py-2">{{ $part->kode_sparepart }}</td>
+                    <td class="py-2">{{ $part->jenis }}</td>
+                    <td class="py-2">{{ $part->stok }}</td>
+                    <td class="py-2">{{ $part->harga }}</td>
                 </tr>
                 @endforeach
             </tbody>

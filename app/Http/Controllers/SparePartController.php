@@ -14,6 +14,7 @@ class SparePartController extends Controller
     {
         $spareparts = SparePart::all();
         return view('dashboard.spareparts', compact('spareparts'));
+        
     }
 
     /**
