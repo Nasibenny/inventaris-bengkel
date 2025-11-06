@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SparePartController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\AuthController;
 
 // 🌐 Root
 Route::get('/', function () {
@@ -15,26 +16,30 @@ Route::get('/', function () {
         : redirect()->route('login');
 });
 
-// 🔐 Auth routes
+
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
+//  Auth routes
 Route::view('/login', 'auth.login')->name('login');
 Route::view('/change-password', 'auth.change-password')->name('password.request');
 
-// 🧭 Protected routes (semua harus login)
+//  Protected routes (semua harus login)
 Route::middleware(['auth'])->group(function () {
 
-    // 🏠 Dashboard (bisa diakses semua)
+    //  Dashboard (bisa diakses semua)
     Route::prefix('dashboard')->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
         Route::get('/notifications', [DashboardController::class, 'notifications'])->name('dashboard.notifications');
+        Route::get('/spareparts', [DashboardController::class, 'spareparts'])->name('dashboard.spareparts');
+        
     });
 
-    // ⚙️ Parts & Spareparts (khusus admin)
+    //  Parts & Spareparts (khusus admin)
     Route::middleware(['role:admin'])->group(function () {
         Route::resource('parts', PartController::class);
         Route::resource('spareparts', SparePartController::class);
     });
 
-    // 💳 Transactions
+    //  Transactions
     Route::prefix('transactions')->group(function () {
         // Semua role bisa lihat transaksi
         Route::get('/', [TransactionController::class, 'index'])->name('dashboard.transactions');
@@ -56,11 +61,11 @@ Route::middleware(['auth'])->group(function () {
         Route::middleware(['role:admin'])->delete('/{id}', [TransactionController::class, 'destroy'])->name('transactions.destroy');
     });
 
-    // 🔑 Password Change
+    //  Password Change
     Route::get('/password/change', [PasswordController::class, 'showChangeForm'])->name('password.change');
     Route::post('/password/update', [PasswordController::class, 'update'])->name('password.update');
 
-    // 🚪 Logout
+    //  Logout
     Route::post('/logout', function () {
         Auth::logout();
         return redirect('/login');

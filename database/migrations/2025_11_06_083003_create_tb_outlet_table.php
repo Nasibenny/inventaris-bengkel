@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->timestamps();
+        Schema::create('tb_outlet', function (Blueprint $table) {
+            $table->integer('id_outlet', true);
+            $table->string('nama_outlet', 100);
+            $table->text('alamat')->nullable();
+            $table->string('telepon', 15)->nullable();
         });
     }
 
@@ -23,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('tb_outlet');
     }
 };

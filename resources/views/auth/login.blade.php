@@ -17,8 +17,8 @@
         <form method="POST" action="{{ route('login') }}" class="space-y-5">
             @csrf
             <div class="text-left">
-                <label for="email" class="text-sm font-semibold">Email/Username</label>
-                <input type="text" name="email" id="email" required
+                <label for="username" class="text-sm font-semibold">Username</label>
+                <input type="text" name="username" id="username" required
                        class="w-full mt-2 px-4 py-2 rounded-lg bg-gray-700 border border-gray-600 focus:ring-2 focus:ring-yellow-400 focus:outline-none">
             </div>
 

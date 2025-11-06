@@ -17,6 +17,7 @@ class User extends Authenticatable
         'nama',
         'username',
         'password',
+        'id_outlet',
         'role', // <--- pastikan ada kolom ini
     ];
 
@@ -24,19 +25,25 @@ class User extends Authenticatable
         'password',
     ];
 
+
+    public function getAuthIdentifierName()
+{
+    return 'username';
+}
+
     // 🔹 Helper untuk periksa role
-    public function isAdmin()
-    {
-        return $this->role === 'admin';
-    }
+    // public function isAdmin()
+    // {
+    //     return $this->role === 'admin';
+    // }
 
-    public function isKasir()
-    {
-        return $this->role === 'kasir';
-    }
+    // public function isKasir()
+    // {
+    //     return $this->role === 'kasir';
+    // }
 
-    public function isMekanik()
-    {
-        return $this->role === 'mekanik';
-    }
+    // public function isMekanik()
+    // {
+    //     return $this->role === 'mekanik';
+    // }
 }

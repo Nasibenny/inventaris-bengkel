@@ -15,16 +15,24 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+
+        // $this->call(BengkelSeeder::class);
+
+
+
+        $this->call([
+        SparePartSeeder::class,
+    ]);
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        // ]);
 
-        // Seed categories and parts
-        \App\Models\Category::factory(5)->create()->each(function ($category) {
-            \App\Models\Part::factory(12)->create(['category_id' => $category->id]);
-        });
+        // // Seed categories and parts
+        // \App\Models\Category::factory(5)->create()->each(function ($category) {
+        //     \App\Models\Part::factory(12)->create(['category_id' => $category->id]);
+        // });
     }
 }

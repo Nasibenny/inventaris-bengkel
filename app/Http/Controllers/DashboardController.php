@@ -11,11 +11,13 @@ class DashboardController extends Controller
     public function index()
     {
         $spareparts = SparePart::all();
-        $totalStock = SparePart::sum('quantity');
-        $lowStock = SparePart::where('quantity', '<', 5)->count();
-        $notifCount = Notification::count();
+        $totalstok = SparePart::sum('stok') ?? 0;
+        $lowstok = SparePart::where('stok', '<', 5)->count();
+        // $notifcount = Notification::count();
 
-        return view('dashboard.index', compact('spareparts', 'totalStock', 'lowStock', 'notifCount'));
+        // return view('dashboard.index', compact('spareparts', 'totalStock', 'lowStock', 'notifCount'));
+
+        return view('dashboard.index', compact('spareparts', 'totalstok', 'lowstok'));
     }
 
     public function spareparts()
@@ -26,7 +28,8 @@ class DashboardController extends Controller
 
     public function notifications()
     {
-        $notifications = Notification::all();
+        // $notifications = Notification::all();
+        $notifications = [];
         return view('dashboard.notifications', compact('notifications'));
     }
 }

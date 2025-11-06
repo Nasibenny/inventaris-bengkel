@@ -30,17 +30,20 @@ class SparePartController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'part_number' => 'required|string|max:100',
-            'quantity' => 'required|integer|min:0',
-            'location' => 'required|string|max:50',
+            'nama_sparepart' => 'required|string|max:255',
+            'kode_sparepart' => 'required|string|max:100',
+            'jenis' => 'required|in:oli,busi,ban,kampas_rem,lainnya',
+            'stok' => 'required|integer|min:0',
+            'harga' => 'required|numeric|min:0',
         ]);
 
         SparePart::create([
-            'name' => $request->name,
-            'part_number' => $request->part_number,
-            'quantity' => $request->quantity,
-            'location' => $request->location,
+            'nama_sparepart' => $request->nama_sparepart,
+            'kode_sparepart' => $request->kode_sparepart,
+            'jenis' => $request->jenis,
+            'stok' => $request->stok,
+            'harga' => $request->harga,
+            'id_outlet' => auth()->user()->id_outlet,
         ]);
 
         return redirect()->route('spareparts.index')->with('success', 'Spare part berhasil ditambahkan!');
@@ -61,10 +64,11 @@ class SparePartController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'name' => 'required|string|max:255',
-            'part_number' => 'required|string|max:100',
-            'quantity' => 'required|integer|min:0',
-            'location' => 'required|string|max:50',
+            'nama_sparepart' => 'required|string|max:255',
+            'kode_sparepart' => 'required|string|max:100',
+            'jenis' => 'required|in:oli,busi,ban,kampas_rem,lainnya',
+            'stok' => 'required|integer|min:0',
+            'harga' => 'required|numeric|min:0',
         ]);
 
         $sparepart = SparePart::findOrFail($id);
